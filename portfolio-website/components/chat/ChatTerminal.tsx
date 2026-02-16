@@ -17,7 +17,7 @@ import {
 
 import { cn, generateId } from "@/lib/utils";
 import { CHAT_CONFIG } from "@/constants/index";
-import { sendChatMessage, sendChatMessageFallback } from "@/app/actions/chat";
+import { sendChatMessage } from "@/app/actions/chat";
 import type { ChatMessage } from "@/types";
 
 // ─── SUB-COMPONENTS ──────────────────────────────────────────────────────
@@ -169,23 +169,18 @@ export default function ChatTerminal({ isOpen, onClose }: ChatTerminalProps) {
 
       try {
         // Build message history for the Server Action
-        const history = [...messages, userMessage].map((m) => ({
-          role: m.role,
-          content: m.content,
-        }));
+        // const history = [...messages, userMessage].map((m) => ({
+        //   role: m.role,
+        //   content: m.content,
+        // }));
 
         // Try the OpenAI-powered action first, fall back to keyword matching
-        let response = await sendChatMessage({ messages: history });
-
-        if (!response.success) {
-          console.warn("[chat] OpenAI unavailable, using fallback:", response.error);
-          response = await sendChatMessageFallback(userText);
-        }
+        let response = await sendChatMessage({ message: userText });
 
         const assistantMessage: ChatMessage = {
           id: generateId(),
           role: "assistant",
-          content: response.message,
+          content: response.success ? response.message : ("Sorry, I hit an unexpected error. Try again or reach out directly via email!"),
           timestamp: new Date(),
         };
 
