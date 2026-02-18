@@ -168,19 +168,18 @@ export default function ChatTerminal({ isOpen, onClose }: ChatTerminalProps) {
       setIsLoading(true);
 
       try {
-        // Build message history for the Server Action
-        // const history = [...messages, userMessage].map((m) => ({
-        //   role: m.role,
-        //   content: m.content,
-        // }));
+        // Build conversation history from existing messages
+        const history = [...messages, userMessage].map((m) => ({
+          role: m.role,
+          content: m.content,
+        }));
 
-        // Try the OpenAI-powered action first, fall back to keyword matching
-        let response = await sendChatMessage({ message: userText });
+        let response = await sendChatMessage({ message: userText, history });
 
         const assistantMessage: ChatMessage = {
           id: generateId(),
           role: "assistant",
-          content: response.success ? response.message : ("Sorry, I hit an unexpected error. Try again or reach out directly via email!"),
+          content: response.success ? response.message : "Sorry, I hit an unexpected error. Try again or reach out directly via email!",
           timestamp: new Date(),
         };
 
@@ -192,8 +191,7 @@ export default function ChatTerminal({ isOpen, onClose }: ChatTerminalProps) {
           {
             id: generateId(),
             role: "assistant",
-            content:
-              "Sorry, I hit an unexpected error. Try again or reach out directly via email!",
+            content: "Sorry, I hit an unexpected error. Try again or reach out directly via email!",
             timestamp: new Date(),
           },
         ]);
