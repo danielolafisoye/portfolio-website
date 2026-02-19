@@ -6,15 +6,15 @@ import type { Project, NavLink, SocialLink, SiteConfig, Skill } from "@/types";
 // ─── SITE ────────────────────────────────────────────────────────────────
 export const SITE_CONFIG: SiteConfig = {
   name: "Daniel Olafisoye",
-  role: "Full-Stack Engineer",
-  tagline: "Building products that move fast and look good doing it.",
+  role: "Software Engineer",
+  tagline: "Software Engineer",
   location: "Johannesburg, ZA",
   email: "dannysoftdev@gmail.com",
   siteUrl: "https://danielolafisoye.dev",
-  bio: "I'm a product-minded engineer who thrives at the intersection of design and performance. I build delightful, accessible interfaces backed by robust systems — from real-time dashboards to AI-powered tools.",
+  bio: "I'm a business-minded software engineer who thrives at the intersection of complex system design and AI development. I build scalable, production-ready platforms backed by robust architecture that actually solve business problems.",
   extendedBio:
-    "When I'm not shipping code, you'll find me contributing to open-source projects, mentoring junior developers, or exploring the latest in AI/ML. I believe great software is built by teams that care deeply about craft.",
-  ogImage: "",
+    "When I'm not shipping code, you'll find me running the court in basketball, unwinding with story-mode games, or exploring the latest AI trends with my tech community. I believe great software is built by engineers who focus on the business logic and underlying architecture, not just the syntax.",
+  ogImage: "/og-image.jpg",
   twitterHandle: "",
 };
 
@@ -95,10 +95,10 @@ export const EDUCATION = [
 
 // ─── NAVIGATION ──────────────────────────────────────────────────────────
 export const NAV_LINKS: NavLink[] = [
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Projects", href: "#work" },
-  { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -107,6 +107,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { platform: "github", href: "https://github.com/danielolafisoye", label: "GitHub" },
   { platform: "linkedin", href: "https://za.linkedin.com/in/daniel-olafisoye", label: "LinkedIn" },
   { platform: "email", href: "mailto:dannysoftdev@gmail.com", label: "Email" },
+  { platform: "tiktok", href: "https://www.tiktok.com/@dannysoftdev", label: "Tiktok" },
 ];
 
 // ─── PROJECTS ────────────────────────────────────────────────────────────
@@ -125,7 +126,7 @@ export const PROJECTS = [
     accentGradient: "from-indigo-500/20 to-violet-500/10",
     icon: "map", 
     year: "2023",
-    liveUrl: "https://play.google.com/store/apps/details?id=com.ludablack.metropoint", // Update with your actual ID
+    liveUrl: "https://play.google.com/store/apps/details?id=com.ludablack.metropoint",
     featured: true,
   },
   {
@@ -147,28 +148,20 @@ export const PROJECTS = [
 
 // ─── SKILLS ──────────────────────────────────────────────────────────────
 export const SKILLS: Skill[] = [
-  { name: "TypeScript", category: "language" },
-  { name: "React / Next.js", category: "framework" },
-  { name: "Node.js", category: "runtime" },
   { name: "Python", category: "language" },
-  { name: "PostgreSQL", category: "database" },
-  { name: "Tailwind CSS", category: "styling" },
-  { name: "Framer Motion", category: "library" },
+  { name: "Java / Spring Boot", category: "framework" },
+  { name: "TypeScript", category: "language" },
+  { name: "React Native", category: "framework" },
   { name: "AWS / Vercel", category: "infra" },
-  { name: "Docker", category: "devops" },
-  { name: "GraphQL", category: "api" },
+  { name: "SQL / PostgreSQL", category: "database" },
+  { name: "AI Orchestration", category: "infra" },
+  { name: "Machine Learning", category: "infra" },
+  { name: "System Architecture", category: "infra" },
+  { name: "React / Next.js", category: "framework" },
 ];
 
 // ─── CHAT ────────────────────────────────────────────────────────────────
 export const CHAT_CONFIG = {
-  systemPrompt: `You are the digital twin of Daniel Olafisoye, a Full-Stack Engineer based in San Francisco. You answer questions about Daniel's work, projects, skills, and engineering philosophy in a friendly, concise tone. Keep responses under 3 sentences unless more detail is requested.
-
-Key facts:
-- Projects: Metropoint (urban analytics), Bus Buddies (social transit), Newsly AI (AI news aggregator)
-- Stack: TypeScript, React/Next.js, Node.js, Python, PostgreSQL, Supabase, AWS/Vercel
-- Philosophy: "Ship fast, refine relentlessly" — get value to users quickly, polish based on real feedback
-- Values: Performance, accessibility, craft, and making interfaces that feel alive
-- Open to new opportunities and collaborations`,
   suggestions: [
     "What's Daniel's tech stack?",
     "Tell me about Metropoint",

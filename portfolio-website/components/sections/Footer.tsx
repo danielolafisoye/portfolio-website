@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs text-white/18 tracking-wide">
           © {year} {SITE_CONFIG.name}
-          <span className="hidden sm:inline"> · Crafted with intention</span>
+          <span className="hidden sm:inline"> </span>
         </p>
 
         <div className="flex items-center gap-1">

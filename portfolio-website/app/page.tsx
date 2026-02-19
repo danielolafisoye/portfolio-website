@@ -39,10 +39,10 @@ export default function HomePage() {
       <div className="relative z-[2]">
         <Navbar onChatOpen={() => setChatOpen(true)} />
         <Hero />
+        <About />
         <Experience />
         <Education/>
         <ProjectGallery />
-        <About />
         <Contact />
         <Footer />
       </div>

@@ -5,15 +5,18 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown, Mail, Github, Linkedin } from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
+import { ElementType } from "react";
 
 import { SITE_CONFIG, SOCIAL_LINKS, VARIANTS } from "@/constants";
 
 const { fadeUp, stagger } = VARIANTS;
 
 // Map platform → icon
-const PLATFORM_ICONS: Record<string, typeof Github> = {
+const PLATFORM_ICONS: Record<string, ElementType> = {
   github: Github,
   linkedin: Linkedin,
+  tiktok: FaTiktok,
   email: Mail,
 };
 
