@@ -11,7 +11,7 @@ export const SITE_CONFIG: SiteConfig = {
   location: "Johannesburg, ZA",
   email: "dannysoftdev@gmail.com",
   siteUrl: "https://danielolafisoye.dev",
-  bio: "I'm a business-minded software engineer who thrives at the intersection of complex system design and AI development. I build scalable, production-ready platforms backed by robust architecture that actually solve business problems.",
+  bio: "I'm Daniel Olafisoye (@dannysoftdev), a business-minded software engineer who thrives at the intersection of complex system design and AI development. Through LUDA BLACK, I build scalable, production-ready platforms backed by robust architecture that actually solve business problems.",
   extendedBio:
     "When I'm not shipping code, you'll find me creating tech content on TikTok as @dannysoftdev, running the court in basketball, unwinding with story-mode games, or exploring the latest AI trends with my community. I believe great software is built by engineers who focus on the business logic and underlying architecture, not just the syntax.",
   ogImage: "/og-image.jpg",
