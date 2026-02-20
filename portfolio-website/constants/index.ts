@@ -13,7 +13,7 @@ export const SITE_CONFIG: SiteConfig = {
   siteUrl: "https://danielolafisoye.dev",
   bio: "I'm a business-minded software engineer who thrives at the intersection of complex system design and AI development. I build scalable, production-ready platforms backed by robust architecture that actually solve business problems.",
   extendedBio:
-    "When I'm not shipping code, you'll find me running the court in basketball, unwinding with story-mode games, or exploring the latest AI trends with my tech community. I believe great software is built by engineers who focus on the business logic and underlying architecture, not just the syntax.",
+    "When I'm not shipping code, you'll find me creating tech content on TikTok as @dannysoftdev, running the court in basketball, unwinding with story-mode games, or exploring the latest AI trends with my community. I believe great software is built by engineers who focus on the business logic and underlying architecture, not just the syntax.",
   ogImage: "/og-image.jpg",
   twitterHandle: "",
 };
