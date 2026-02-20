@@ -1,4 +1,3 @@
-"use server";
 
 interface ChatRequest {
   message: string;

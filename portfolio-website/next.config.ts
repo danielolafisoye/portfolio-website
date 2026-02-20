@@ -5,14 +5,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    serverActions: {
-      allowedOrigins: [
-        'localhost:3000',
-        'crispy-yodel-v474v66gqx5h5gg-3000.app.github.dev'
-      ],
-    },
-  },
 };
 
 export default nextConfig;
