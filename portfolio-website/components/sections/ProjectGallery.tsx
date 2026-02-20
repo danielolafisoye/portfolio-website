@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Layers, Zap, Sparkles, Code2 } from "lucide-react";
+import { ArrowUpRight, Layers, Zap, Sparkles, Code2, Map, MessageCircle } from "lucide-react";
 
 import { PROJECTS, VARIANTS } from "@/constants";
 import type { Project, ProjectIcon } from "@/types";
@@ -19,6 +19,8 @@ const ICONS: Record<ProjectIcon, React.ReactNode> = {
   zap: <Zap size={20} />,
   sparkles: <Sparkles size={20} />,
   code: <Code2 size={20} />,
+  map: <Map size={20} />, 
+  "message-circle": <MessageCircle size={20} />,
 };
 
 // ─── PROJECT CARD ────────────────────────────────────────────────────────

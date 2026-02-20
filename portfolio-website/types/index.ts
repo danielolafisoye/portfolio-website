@@ -26,7 +26,7 @@ export interface SocialLink {
   label: string;
 }
 
-export type ProjectIcon = "layers" | "zap" | "sparkles" | "code";
+export type ProjectIcon = "layers" | "zap" | "sparkles" | "code" | "map" | "message-circle";
 
 export interface Project {
   slug: string;

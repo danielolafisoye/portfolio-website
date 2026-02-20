@@ -10,7 +10,7 @@ export const SITE_CONFIG: SiteConfig = {
   tagline: "Software Engineer",
   location: "Johannesburg, ZA",
   email: "dannysoftdev@gmail.com",
-  siteUrl: "https://danielolafisoye.dev",
+  siteUrl: "https://danielolafisoye.com",
   bio: "I'm Daniel Olafisoye (@dannysoftdev), a business-minded software engineer who thrives at the intersection of complex system design and AI development. Through LUDA BLACK, I build scalable, production-ready platforms backed by robust architecture that actually solve business problems.",
   extendedBio:
     "When I'm not shipping code, you'll find me creating tech content on TikTok as @dannysoftdev, running the court in basketball, unwinding with story-mode games, or exploring the latest AI trends with my community. I believe great software is built by engineers who focus on the business logic and underlying architecture, not just the syntax.",
@@ -113,14 +113,12 @@ export const SOCIAL_LINKS: SocialLink[] = [
 // ─── PROJECTS ────────────────────────────────────────────────────────────
 // src/constants/index.ts
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
   {
     slug: "metropoint",
     title: "Metropoint",
-    description:
-      "A comprehensive public transit mobile application facilitating real-time navigation, route scheduling, and commuter communication.",
-    longDescription:
-      "Metropoint revolutionizes the daily commute by providing a unified platform for public transit schedules and route details. Architected with a robust Java Spring Boot backend and a PostgreSQL database, the mobile client is built using React Native Expo for cross-platform performance. The app includes real-time chat features and is currently deployed on the Google Play Store.",
+    description: "A comprehensive public transit mobile application facilitating real-time navigation, route scheduling, and commuter communication.",
+    longDescription: "Metropoint revolutionizes the daily commute by providing a unified platform for public transit schedules and route details. Architected with a robust Java Spring Boot backend and a PostgreSQL database, the mobile client is built using React Native Expo for cross-platform performance. The app includes real-time chat features and is currently deployed on the Google Play Store.",
     tags: ["React Native", "Spring Boot", "PostgreSQL", "Java", "Google Play"],
     color: "#6366f1", 
     accentGradient: "from-indigo-500/20 to-violet-500/10",
@@ -132,10 +130,8 @@ export const PROJECTS = [
   {
     slug: "newsly-ai",
     title: "Newsly AI",
-    description:
-      "An automated media platform on WhatsApp that leverages AI agents to curate and deliver South African tech news in real-time.",
-    longDescription:
-      "Newsly AI redefines news consumption by delivering AI-synthesized tech updates directly to users via WhatsApp. The system runs on scalable AWS EC2 instances, utilizing Python scripts to scrape, analyze, and summarize content using the OpenAI API. It features an automated distribution pipeline that connects directly to the WhatsApp Business API.",
+    description: "An automated media platform on WhatsApp that leverages AI agents to curate and deliver South African tech news in real-time.",
+    longDescription: "Newsly AI redefines news consumption by delivering AI-synthesized tech updates directly to users via WhatsApp. The system runs on scalable AWS EC2 instances, utilizing Python scripts to scrape, analyze, and summarize content using the OpenAI API. It features an automated distribution pipeline that connects directly to the WhatsApp Business API.",
     tags: ["OpenAI API", "AWS EC2", "Python", "WhatsApp API", "LLMs"],
     color: "#10b981", 
     accentGradient: "from-emerald-500/20 to-green-500/10",
