@@ -110,6 +110,18 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { platform: "tiktok", href: "https://www.tiktok.com/@dannysoftdev", label: "Tiktok" },
 ];
 
+// Linktree
+export const LINKTREE_LINKS = [
+  { label: "Portfolio Website", href: "https://danielolafisoye.com" },
+  { label: "Instagram", href: "https://instagram.com/dannysoftdev" }, 
+  { label: "YouTube", href: "https://youtube.com/@dannysoftdev" }, 
+  { label: "TikTok", href: "https://www.tiktok.com/@dannysoftdev" },
+  { label: "GitHub", href: "https://github.com/danielolafisoye" },
+  { label: "LinkedIn", href: "https://za.linkedin.com/in/daniel-olafisoye" },
+  { label: "Email Me", href: "mailto:dannysoftdev@gmail.com" },
+  { label: "WhatsApp Me", href: "https://wa.me/27665919979" },
+];
+
 // ─── PROJECTS ────────────────────────────────────────────────────────────
 // src/constants/index.ts
 
