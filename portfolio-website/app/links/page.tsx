@@ -60,7 +60,7 @@ export default function LinksPage() {
           
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/60 text-[11px] tracking-[0.15em] uppercase font-medium shadow-[0_0_20px_rgba(255,255,255,0.02)]">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Software Engineer
+            Co-Founder of LUDA BLACK
           </span>
         </motion.div>
         {/* Humble About Me Section */}
