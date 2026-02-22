@@ -119,7 +119,7 @@ export const LINKTREE_LINKS = [
   { label: "GitHub", href: "https://github.com/danielolafisoye" },
   { label: "LinkedIn", href: "https://za.linkedin.com/in/daniel-olafisoye" },
   { label: "Email Me", href: "mailto:dannysoftdev@gmail.com" },
-  { label: "WhatsApp Me", href: "https://wa.me/27665919979" },
+  { label: "Whatsapp LUDA BLACK", href: "https://wa.me/27665919979" },
 ];
 
 // ─── PROJECTS ────────────────────────────────────────────────────────────
