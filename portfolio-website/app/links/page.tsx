@@ -2,140 +2,206 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Globe, Instagram, Youtube, Github, Linkedin, Mail, MessageCircle, ArrowUpRight} from "lucide-react";
+import {
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
-import { LINKTREE_LINKS } from "@/constants"; 
 
-const getIcon = (label: string) => {
-  const l = label.toLowerCase();
-  if (l.includes("instagram")) return <Instagram size={18} />;
-  if (l.includes("youtube")) return <Youtube size={18} />;
-  if (l.includes("tiktok")) return <FaTiktok size={18} />;
-  if (l.includes("github")) return <Github size={18} />;
-  if (l.includes("linkedin")) return <Linkedin size={18} />;
-  if (l.includes("email")) return <Mail size={18} />;
-  if (l.includes("whatsapp")) return <MessageCircle size={18} />;
-  return <Globe size={18} />;
-};
+const socials = [
+  {
+    name: "Instagram",
+    count: "2.5K",
+    label: "followers",
+    href: "https://instagram.com/dannysoftdev",
+    icon: <Instagram size={21} />,
+  },
+  {
+    name: "TikTok",
+    count: "9K",
+    label: "followers",
+    href: "https://www.tiktok.com/@dannysoftdev",
+    icon: <FaTiktok size={19} />,
+  },
+  {
+    name: "YouTube",
+    count: "13",
+    label: "subscribers",
+    href: "https://youtube.com/@dannysoftdev",
+    icon: <Youtube size={22} />,
+  },
+];
+
+const links = [
+  {
+    name: "GitHub",
+    subtitle: "View my code & projects",
+    href: "https://github.com/danielolafisoye",
+    icon: <Github size={19} />,
+  },
+  {
+    name: "LinkedIn",
+    subtitle: "Connect professionally",
+    href: "https://za.linkedin.com/in/daniel-olafisoye",
+    icon: <Linkedin size={19} />,
+  },
+  {
+    name: "Email",
+    subtitle: "Business & collaborations",
+    href: "mailto:YOUR_EMAIL_HERE",
+    icon: <Mail size={19} />,
+  },
+];
 
 export default function LinksPage() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center py-20 px-6 overflow-hidden">
-      {/* ── Ambient Orbs & Grid ── */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-[10%] left-[10%] w-[400px] h-[400px] rounded-full bg-indigo-600/[0.04] blur-[120px]" />
-        <div className="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-violet-500/[0.035] blur-[100px]" />
-      </div>
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
-        style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
-        }}
-      />
+    <main className="relative min-h-screen overflow-hidden bg-[#f5f4f1] text-[#171717]">
 
-      <div className="relative w-full max-w-md mx-auto z-10 flex flex-col items-center mt-8">
-        {/* Profile Section */}
+      {/* Soft background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-[-240px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-violet-300/30 blur-[150px]" />
+
+        <div className="absolute bottom-[-250px] right-[-200px] h-[500px] w-[500px] rounded-full bg-blue-200/30 blur-[150px]" />
+      </div>
+
+      <section className="relative z-10 mx-auto flex min-h-screen w-full max-w-xl flex-col items-center px-5 pb-16 pt-16 sm:px-6 sm:pt-20">
+
+        {/* Profile */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center mb-10 text-center"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex w-full flex-col items-center text-center"
         >
-          <div className="relative w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-indigo-500/30 to-violet-500/30 mb-5">
-            <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-[#0b0b14]">
-              <Image 
-                src="/profile.JPG" 
-                alt="Daniel Olafisoye" 
-                fill 
+          {/* Profile image */}
+          <div className="relative mb-5 h-28 w-28 rounded-full bg-white p-[4px] shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
+            <div className="relative h-full w-full overflow-hidden rounded-full">
+              <Image
+                src="/profile.JPG"
+                alt="Daniel Olafisoye"
+                fill
+                priority
                 className="object-cover"
               />
             </div>
           </div>
-          
-          <h1 className="text-2xl md:text-3xl font-bold text-white/90 tracking-tight mb-1">
+
+          <h1 className="text-[29px] font-bold tracking-[-0.03em] text-[#151515] sm:text-[32px]">
             Daniel Olafisoye
           </h1>
-          <p className="text-sm text-white/40 mb-4 font-medium tracking-wide">@dannysoftdev</p>
-          
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/60 text-[11px] tracking-[0.15em] uppercase font-medium shadow-[0_0_20px_rgba(255,255,255,0.02)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Co-Founder of LUDA BLACK
-          </span>
-        </motion.div>
-        {/* Humble About Me Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="w-full p-6 rounded-2xl bg-white/[0.02] border border-white/[0.04] text-center"
-        >
-          <h2 className="text-[11px] font-medium text-white/40 mb-3 tracking-[0.2em] uppercase">
-            A bit about me
-          </h2>
-          <p className="text-sm text-white/50 leading-relaxed">
-            Just a normal human being who loves building cool things and creating content. Whether I'm engineering scalable apps or making videos, I'm just enjoying the journey and sharing it with you. Just chilling, you know? Thanks for stopping by.
+
+          <p className="mt-1 text-sm font-medium text-black/40">
+            @dannysoftdev
+          </p>
+
+          <div className="mt-4 flex items-center gap-1.5 text-[13px] text-black/50">
+            <MapPin size={14} />
+            Johannesburg, South Africa
+          </div>
+
+          <p className="mt-4 max-w-md text-[14px] font-medium leading-6 text-black/65 sm:text-[15px]">
+            Software Engineer
+            <span className="mx-2 text-black/20">•</span>
+            Business Owner
+            <span className="mx-2 text-black/20">•</span>
+            Tech Content Creator
           </p>
         </motion.div>
 
-        {/* Links List */}
-        <div className="w-full flex flex-col gap-4 mb-12 pt-10">
-          {LINKTREE_LINKS.map((link, i) => {
-            const isYouTube = link.label.toLowerCase().includes("youtube");
+        {/* Social stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mt-10 grid w-full grid-cols-3 gap-3"
+        >
+          {socials.map((social, i) => (
+            <motion.a
+              key={social.name}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + i * 0.07 }}
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.97 }}
+              className="group rounded-[22px] border border-black/[0.05] bg-white/80 px-2 py-5 text-center shadow-[0_8px_30px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)]"
+            >
+              <div className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-[#f1f0ed] text-black/65 transition-transform duration-300 group-hover:scale-105">
+                {social.icon}
+              </div>
 
-            return (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={
-                  isYouTube 
-                    ? { opacity: 1, y: 0, boxShadow: ["0px 0px 10px rgba(244,63,94,0.2)", "0px 0px 30px rgba(244,63,94,0.5)", "0px 0px 10px rgba(244,63,94,0.2)"] }
-                    : { opacity: 1, y: 0 }
-                }
-                transition={
-                  isYouTube 
-                    ? { duration: 0.4, delay: 0.1 + i * 0.05, boxShadow: { repeat: Infinity, duration: 2, ease: "easeInOut" } }
-                    : { duration: 0.4, delay: 0.1 + i * 0.05 }
-                }
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`group relative flex items-center justify-between w-full p-4 rounded-2xl transition-all duration-300 backdrop-blur-md overflow-hidden ${
-                  isYouTube 
-                    ? "bg-rose-500/[0.05] border border-rose-500/40 hover:bg-rose-500/[0.08]" 
-                    : "bg-white/[0.03] border border-white/[0.06] hover:border-indigo-500/30 hover:bg-white/[0.06]"
-                }`}
-              >
-                {!isYouTube && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/5 to-violet-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                )}
-                
-                <div className="relative flex items-center gap-4 text-white/70 group-hover:text-white/95 transition-colors z-10">
-                  <span className={`flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 ${
-                    isYouTube 
-                      ? "bg-rose-500/20 border border-rose-500/30 text-rose-400 group-hover:bg-rose-500/30 group-hover:text-rose-300"
-                      : "bg-white/[0.04] border border-white/[0.05] group-hover:bg-indigo-500/20 group-hover:border-indigo-500/30 group-hover:text-indigo-300"
-                  }`}>
-                    {getIcon(link.label)}
-                  </span>
-                  <span className="text-[15px] font-medium tracking-wide">
-                    {link.label}
-                  </span>
+              <p className="text-[11px] font-medium text-black/40">
+                {social.name}
+              </p>
+
+              <p className="mt-1 text-[23px] font-bold tracking-tight text-[#171717]">
+                {social.count}
+              </p>
+
+              <p className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.12em] text-black/30">
+                {social.label}
+              </p>
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Section label */}
+        <div className="mb-4 mt-10 flex w-full items-center justify-between">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-black/35">
+            Connect
+          </p>
+        </div>
+
+        {/* Secondary links */}
+        <div className="flex w-full flex-col gap-3">
+          {links.map((link, i) => (
+            <motion.a
+              key={link.name}
+              href={link.href}
+              target={link.name === "Email" ? undefined : "_blank"}
+              rel={link.name === "Email" ? undefined : "noopener noreferrer"}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 + i * 0.06 }}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.99 }}
+              className="group flex w-full items-center justify-between rounded-[20px] border border-black/[0.05] bg-white/75 px-4 py-4 shadow-[0_6px_25px_rgba(0,0,0,0.035)] backdrop-blur-xl transition-all duration-300 hover:bg-white hover:shadow-[0_12px_35px_rgba(0,0,0,0.07)]"
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f1f0ed] text-black/55">
+                  {link.icon}
                 </div>
 
-                <ArrowUpRight 
-                  size={18} 
-                  className={`relative z-10 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 ${
-                    isYouTube ? "text-rose-400/60 group-hover:text-rose-400" : "text-white/20 group-hover:text-white/60"
-                  }`} 
-                />
-              </motion.a>
-            );
-          })}
+                <div>
+                  <p className="text-sm font-semibold text-black/80">
+                    {link.name}
+                  </p>
+
+                  <p className="mt-0.5 text-[11px] text-black/35">
+                    {link.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              <ArrowUpRight
+                size={17}
+                className="text-black/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black/60"
+              />
+            </motion.a>
+          ))}
         </div>
-      </div>
-    </section>
+
+        <p className="mt-12 text-[11px] text-black/25">
+          @dannysoftdev
+        </p>
+      </section>
+    </main>
   );
 }
