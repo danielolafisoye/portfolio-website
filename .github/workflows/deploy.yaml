@@ -43,3 +43,9 @@ jobs:
 
       - name: Upload website to S3
         run: aws s3 sync portfolio-website/out/ s3://danielolafisoye.com/
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E4S06FKR947W7 \
+            --paths "/*"
