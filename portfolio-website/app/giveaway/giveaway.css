@@ -352,6 +352,18 @@ body {
     uppercase;
 }
 
+@media (max-width: 560px) {
+  .hero-title {
+    font-size: 34px !important;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+  }
+
+  .title-line {
+    white-space: nowrap;
+  }
+}
+
 .title-line {
   display: block;
 }
