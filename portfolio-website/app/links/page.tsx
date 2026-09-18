@@ -115,6 +115,58 @@ export default function LinksPage() {
           </p>
         </motion.div>
 
+        {/* Paid Promo */}
+<motion.a
+  href="https://redacademymarketsurvey.forms.app/jnrsoftwaresurvey"
+  target="_blank"
+  rel="noopener noreferrer"
+  initial={{ opacity: 0, y: 15 }}
+animate={{
+  opacity: 1,
+  y: [0, -7, 0],
+}}
+transition={{
+  opacity: { duration: 0.2 },
+  y: {
+    duration: 0.45,
+    repeat: Infinity,
+    ease: "easeInOut",
+  },
+}}
+  whileHover={{ y: -4 }}
+  whileTap={{ scale: 0.985 }}
+  className="group relative mt-10 w-full overflow-hidden rounded-[24px] bg-[#e63932] px-5 py-5 text-white shadow-[0_18px_55px_rgba(230,57,50,0.22)] transition-all duration-300 hover:shadow-[0_24px_70px_rgba(230,57,50,0.30)]"
+>
+  {/* Glow */}
+  <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-white/20 blur-[55px]" />
+
+  <div className="relative z-10 flex items-center justify-between gap-5">
+    <div>
+      <div className="mb-2 flex items-center gap-2">
+        <span className="rounded-full bg-[#171717] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-white">
+          Paid Promo
+        </span>
+
+        <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-white/60">
+          redAcademy
+        </span>
+      </div>
+
+      <p className="text-[16px] font-semibold tracking-[-0.02em] text-white">
+        Software Developers: Share Your Experience
+      </p>
+
+      <p className="mt-1 max-w-[390px] text-[11px] leading-5 text-white/70">
+        Help shape better software development programmes. Take the short survey.
+      </p>
+    </div>
+
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-[#e63932] transition-all duration-300 group-hover:rotate-6 group-hover:scale-105">
+      <ArrowUpRight size={18} />
+    </div>
+  </div>
+</motion.a>
+
         {/* GIVEAWAY — Featured first link */}
         <motion.a
           href="/giveaway"
@@ -123,7 +175,7 @@ export default function LinksPage() {
           transition={{ delay: 0.12 }}
           whileHover={{ y: -4 }}
           whileTap={{ scale: 0.985 }}
-          className="group relative mt-10 w-full overflow-hidden rounded-[24px] bg-[#171717] px-5 py-5 text-white shadow-[0_18px_55px_rgba(0,0,0,0.16)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(0,0,0,0.23)]"
+          className="group relative mt-4 w-full overflow-hidden rounded-[24px] bg-[#171717] px-5 py-5 text-white shadow-[0_18px_55px_rgba(0,0,0,0.16)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(0,0,0,0.23)]"
         >
           {/* Glow */}
           <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-[#dfff43]/25 blur-[55px] transition-all duration-500 group-hover:bg-[#dfff43]/35" />
