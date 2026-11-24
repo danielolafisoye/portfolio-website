@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
   Github,
@@ -11,13 +12,19 @@ import {
   Instagram,
   Youtube,
   Gift,
+  X,
 } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
+
+import { SITE_CONFIG } from "@/constants";
+import { GIVEAWAY_API_URL } from "@/lib/giveaway";
+
+const profilePhoto = "/links-profile.webp";
 
 const socials = [
   {
     name: "Instagram",
-    count: "2.5K",
+    count: "3.2K",
     label: "followers",
     href: "https://instagram.com/dannysoftdev",
     icon: <Instagram size={21} />,
@@ -25,7 +32,7 @@ const socials = [
   },
   {
     name: "TikTok",
-    count: "9K",
+    count: "12K",
     label: "followers",
     href: "https://www.tiktok.com/@dannysoftdev",
     icon: <FaTiktok size={19} />,
@@ -33,7 +40,7 @@ const socials = [
   },
   {
     name: "YouTube",
-    count: "13",
+    count: "20",
     label: "subscribers",
     href: "https://youtube.com/@dannysoftdev",
     icon: <Youtube size={22} />,
@@ -57,12 +64,39 @@ const links = [
   {
     name: "Email",
     subtitle: "Business & collaborations",
-    href: "mailto:YOUR_EMAIL_HERE",
+    href: `mailto:${SITE_CONFIG.email}`,
     icon: <Mail size={19} />,
   },
 ];
 
 export default function LinksPage() {
+  const [showGiveaway, setShowGiveaway] = useState(false);
+  const photoDialog = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadGiveawayStatus() {
+      try {
+        const response = await fetch(GIVEAWAY_API_URL, {
+          cache: "no-store",
+          headers: { Accept: "application/json" },
+          signal: controller.signal,
+        });
+
+        if (!response.ok) return;
+
+        const giveaway = await response.json();
+        setShowGiveaway(giveaway?.status === "open");
+      } catch {
+        // Keep the card hidden when the giveaway status is unavailable.
+      }
+    }
+
+    void loadGiveawayStatus();
+    return () => controller.abort();
+  }, []);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#f5f4f1] text-[#171717]">
       {/* Soft background */}
@@ -80,18 +114,23 @@ export default function LinksPage() {
           transition={{ duration: 0.5 }}
           className="flex w-full flex-col items-center text-center"
         >
-          {/* Profile image */}
-          <div className="relative mb-5 h-28 w-28 rounded-full bg-white p-[4px] shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
+          <button
+            type="button"
+            onClick={() => photoDialog.current?.showModal()}
+            aria-label="View full profile photo"
+            aria-haspopup="dialog"
+            className="relative mb-5 h-28 w-28 rounded-full bg-white p-[4px] shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-shadow hover:ring-2 hover:ring-violet-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-600"
+          >
             <div className="relative h-full w-full overflow-hidden rounded-full">
               <Image
-                src="/profile.JPG"
+                src={profilePhoto}
                 alt="Daniel Olafisoye"
                 fill
                 priority
-                className="object-cover"
+                className="origin-[center_28%] scale-[1.6] object-cover object-top"
               />
             </div>
-          </div>
+          </button>
 
           <h1 className="text-[29px] font-bold tracking-[-0.03em] text-[#151515] sm:text-[32px]">
             Daniel Olafisoye
@@ -109,57 +148,83 @@ export default function LinksPage() {
           <p className="mt-4 max-w-md text-[14px] font-medium leading-6 text-black/65 sm:text-[15px]">
             Software Engineer
             <span className="mx-2 text-black/20">•</span>
-            Business Owner
+            <span className="whitespace-nowrap">Founder &amp; CEO</span>
             <span className="mx-2 text-black/20">•</span>
             Tech Content Creator
           </p>
         </motion.div>
 
-        {/* GIVEAWAY — Featured first link */}
-        <motion.a
-          href="/giveaway"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.12 }}
-          whileHover={{ y: -4 }}
-          whileTap={{ scale: 0.985 }}
-          className="group relative mt-10 w-full overflow-hidden rounded-[24px] bg-[#171717] px-5 py-5 text-white shadow-[0_18px_55px_rgba(0,0,0,0.16)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(0,0,0,0.23)]"
+        <dialog
+          ref={photoDialog}
+          aria-label="Full profile photo"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) event.currentTarget.close();
+          }}
+          className="m-auto max-h-[calc(100dvh-2rem)] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl bg-[#171717] p-0 shadow-2xl backdrop:bg-black/75"
         >
-          {/* Glow */}
-          <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-[#dfff43]/25 blur-[55px] transition-all duration-500 group-hover:bg-[#dfff43]/35" />
+          <button
+            type="button"
+            onClick={() => photoDialog.current?.close()}
+            aria-label="Close profile photo"
+            className="absolute right-3 top-3 z-10 grid size-11 place-items-center rounded-full bg-black/70 text-white hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            <X aria-hidden="true" size={22} />
+          </button>
+          <Image
+            src={profilePhoto}
+            alt="Full portrait of Daniel Olafisoye"
+            width={640}
+            height={960}
+            className="h-auto max-h-[calc(100dvh-2rem)] w-auto max-w-full object-contain"
+          />
+        </dialog>
 
-          <div className="relative z-10 flex items-center justify-between gap-5">
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[15px] bg-[#dfff43] text-[#111]">
-                <Gift size={21} />
-              </div>
+        {showGiveaway && (
+          <motion.a
+            href="/giveaway"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.12 }}
+            whileHover={{ y: -4 }}
+            whileTap={{ scale: 0.985 }}
+            className="group relative mt-10 w-full overflow-hidden rounded-[24px] bg-[#171717] px-5 py-5 text-white shadow-[0_18px_55px_rgba(0,0,0,0.16)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(0,0,0,0.23)]"
+          >
+            {/* Glow */}
+            <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-[#dfff43]/25 blur-[55px] transition-all duration-500 group-hover:bg-[#dfff43]/35" />
 
-              <div>
-                <div className="mb-1.5 flex items-center gap-2">
-                  <span className="rounded-full bg-[#dfff43] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#111]">
-                    Giveaway
-                  </span>
-
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-white/35">
-                    DannySoftDev
-                  </span>
+            <div className="relative z-10 flex items-center justify-between gap-5">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[15px] bg-[#dfff43] text-[#111]">
+                  <Gift size={21} />
                 </div>
 
-                <p className="text-[16px] font-semibold tracking-[-0.02em] text-white">
-                  Enter the Tech Giveaway
-                </p>
+                <div>
+                  <div className="mb-1.5 flex items-center gap-2">
+                    <span className="rounded-full bg-[#dfff43] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#111]">
+                      Giveaway
+                    </span>
 
-                <p className="mt-1 text-[11px] leading-5 text-white/45">
-                  Enter for a chance to win some tech.
-                </p>
+                    <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-white/35">
+                      DannySoftDev
+                    </span>
+                  </div>
+
+                  <p className="text-[16px] font-semibold tracking-[-0.02em] text-white">
+                    Enter the Tech Giveaway
+                  </p>
+
+                  <p className="mt-1 text-[11px] leading-5 text-white/45">
+                    Enter for a chance to win some tech.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] transition-all duration-300 group-hover:rotate-6 group-hover:bg-[#dfff43] group-hover:text-black">
+                <ArrowUpRight size={17} />
               </div>
             </div>
-
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] transition-all duration-300 group-hover:rotate-6 group-hover:bg-[#dfff43] group-hover:text-black">
-              <ArrowUpRight size={17} />
-            </div>
-          </div>
-        </motion.a>
+          </motion.a>
+        )}
 
         {/* Social stats */}
         <motion.div
