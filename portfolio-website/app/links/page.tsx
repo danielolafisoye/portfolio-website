@@ -148,8 +148,6 @@ export default function LinksPage() {
           <p className="mt-4 max-w-md text-[14px] font-medium leading-6 text-black/65 sm:text-[15px]">
             Software Engineer
             <span className="mx-2 text-black/20">•</span>
-            Entrepreneur
-            <span className="mx-2 text-black/20">•</span>
             <span className="whitespace-nowrap">Founder &amp; CEO</span>
             <span className="mx-2 text-black/20">•</span>
             Tech Content Creator
