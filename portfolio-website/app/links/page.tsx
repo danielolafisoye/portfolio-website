@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
   Github,
@@ -12,6 +12,7 @@ import {
   Instagram,
   Youtube,
   Gift,
+  X,
 } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
 
@@ -70,6 +71,7 @@ const links = [
 
 export default function LinksPage() {
   const [showGiveaway, setShowGiveaway] = useState(false);
+  const photoDialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -112,11 +114,11 @@ export default function LinksPage() {
           transition={{ duration: 0.5 }}
           className="flex w-full flex-col items-center text-center"
         >
-          <a
-            href={profilePhoto}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View full profile photo (opens in a new tab)"
+          <button
+            type="button"
+            onClick={() => photoDialog.current?.showModal()}
+            aria-label="View full profile photo"
+            aria-haspopup="dialog"
             className="relative mb-5 h-28 w-28 rounded-full bg-white p-[4px] shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-shadow hover:ring-2 hover:ring-violet-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-600"
           >
             <div className="relative h-full w-full overflow-hidden rounded-full">
@@ -128,7 +130,7 @@ export default function LinksPage() {
                 className="origin-[center_28%] scale-[1.6] object-cover object-top"
               />
             </div>
-          </a>
+          </button>
 
           <h1 className="text-[29px] font-bold tracking-[-0.03em] text-[#151515] sm:text-[32px]">
             Daniel Olafisoye
@@ -146,11 +148,36 @@ export default function LinksPage() {
           <p className="mt-4 max-w-md text-[14px] font-medium leading-6 text-black/65 sm:text-[15px]">
             Software Engineer
             <span className="mx-2 text-black/20">•</span>
-            Business Owner
+            Co-Founder at LUDA BLACK
             <span className="mx-2 text-black/20">•</span>
             Tech Content Creator
           </p>
         </motion.div>
+
+        <dialog
+          ref={photoDialog}
+          aria-label="Full profile photo"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) event.currentTarget.close();
+          }}
+          className="m-auto max-h-[calc(100dvh-2rem)] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl bg-[#171717] p-0 shadow-2xl backdrop:bg-black/75"
+        >
+          <button
+            type="button"
+            onClick={() => photoDialog.current?.close()}
+            aria-label="Close profile photo"
+            className="absolute right-3 top-3 z-10 grid size-11 place-items-center rounded-full bg-black/70 text-white hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            <X aria-hidden="true" size={22} />
+          </button>
+          <Image
+            src={profilePhoto}
+            alt="Full portrait of Daniel Olafisoye"
+            width={640}
+            height={960}
+            className="h-auto max-h-[calc(100dvh-2rem)] w-auto max-w-full object-contain"
+          />
+        </dialog>
 
         {showGiveaway && (
           <motion.a
