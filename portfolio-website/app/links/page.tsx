@@ -150,6 +150,8 @@ export default function LinksPage() {
             <span className="mx-2 text-black/20">•</span>
             Entrepreneur
             <span className="mx-2 text-black/20">•</span>
+            <span className="whitespace-nowrap">Founder &amp; CEO</span>
+            <span className="mx-2 text-black/20">•</span>
             Tech Content Creator
           </p>
         </motion.div>
