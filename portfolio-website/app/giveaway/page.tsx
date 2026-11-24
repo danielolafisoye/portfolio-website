@@ -7,6 +7,8 @@ import {
   useState,
 } from "react";
 
+import { GIVEAWAY_API_URL } from "@/lib/giveaway";
+
 type GiveawayStatus =
   | "loading"
   | "pending"
@@ -30,9 +32,6 @@ type Countdown = {
   minutes: number;
   seconds: number;
 };
-
-const GIVEAWAY_API_URL =
-  "https://byvafwruuafjgeqtzetu.supabase.co/functions/v1/giveaway-function";
 
 function cleanTikTokUsername(value: string) {
   return value
